@@ -1,6 +1,6 @@
-package com.proxy;
+package com.malixi.proxy;
 
-public class Jiashi implements KindWomen{
+public class Jiashi implements KindWomen {
 
 
     @Override

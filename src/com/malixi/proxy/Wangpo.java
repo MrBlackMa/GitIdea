@@ -1,4 +1,4 @@
-package com.proxy;
+package com.malixi.proxy;
 
 public class Wangpo implements KindWomen {
     private KindWomen kindWomen;

@@ -1,4 +1,4 @@
-package com.proxy;
+package com.malixi.proxy;
 
 public class XImenqing {
     public static void main(String[] args) {
