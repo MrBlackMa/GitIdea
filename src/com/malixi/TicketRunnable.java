@@ -1,8 +1,12 @@
 package com.malixi;
 
+/**
+ * 一个对象，多个线程 推荐使用实现runnable接口
+ */
 public class TicketRunnable implements Runnable {
     private int ticket = 10000;
     Object ob = new Object();
+    private int j=0;
 
     @Override
     public void run() {
@@ -11,7 +15,9 @@ public class TicketRunnable implements Runnable {
                 if (ticket > 0) {
                     System.out.println(Thread.currentThread().getName() + "正在出售第" + (ticket--) + "张票");
                 }
+                j++;
             }
+
         }
     }
 
@@ -27,7 +33,5 @@ public class TicketRunnable implements Runnable {
         thread3.start();
         thread4.start();
         thread5.start();
-
-
     }
 }
