@@ -10,12 +10,12 @@ public class T02_AtomicVsSyncVsLongAdder {
     static LongAdder count3 = new LongAdder();
 
     public static void main(String[] args) throws Exception {
-        Thread[] threads = new Thread[2000];
+        Thread[] threads = new Thread[1000];
 
         for(int i=0; i<threads.length; i++) {
             threads[i] =
                     new Thread(()-> {
-                        for(int k=0; k<100000; k++) count1.incrementAndGet();
+                        for(int k=0; k<10000; k++) count1.incrementAndGet();
                     });
         }
 
@@ -28,7 +28,7 @@ public class T02_AtomicVsSyncVsLongAdder {
         long end = System.currentTimeMillis();
 
         //TimeUnit.SECONDS.sleep(10);
-
+        Thread.sleep(5000);
         System.out.println("Atomic: " + count1.get() + " time " + (end-start));
         //-----------------------------------------------------------
         Object lock = new Object();
@@ -39,7 +39,7 @@ public class T02_AtomicVsSyncVsLongAdder {
                     @Override
                     public void run() {
 
-                        for (int k = 0; k < 100000; k++)
+                        for (int k = 0; k < 10000; k++)
                             synchronized (lock) {
                                 count2++;
                             }
@@ -63,7 +63,7 @@ public class T02_AtomicVsSyncVsLongAdder {
         for(int i=0; i<threads.length; i++) {
             threads[i] =
                     new Thread(()-> {
-                        for(int k=0; k<100000; k++) count3.increment();
+                        for(int k=0; k<10000; k++) count3.increment();
                     });
         }
 
@@ -71,7 +71,7 @@ public class T02_AtomicVsSyncVsLongAdder {
 
         for(Thread t : threads ) t.start();
 
-        for (Thread t : threads) t.join();
+       for (Thread t : threads) t.join();
 
         end = System.currentTimeMillis();
 

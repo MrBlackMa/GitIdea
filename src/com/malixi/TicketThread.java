@@ -4,20 +4,20 @@ package com.malixi;
  * 多个对象
  * 多个线程
  */
-public class TicketThread extends  Thread{
-   private  int ticket=5;
-   Object ob=new Object();
-   int j=0;
+public  class TicketThread extends  Thread{
+
+
+ //  private static int ticket=5;
+ //  Object ob=new Object();
 
     @Override
     public  void run() {
-        for(int i=0;i<100;i++){
-            synchronized (ob){
-                if(ticket>0){
-                    System.out.println(Thread.currentThread().getName()+"正在出售第"+(ticket--)+"张票");
+        for(int i=0;i<100000;i++){
+            //synchronized (IntegerEum.ob){
+                if(IntegerEum.getIntegerEum().ticket>0){
+                    System.out.println(Thread.currentThread().getName()+"正在出售第"+(IntegerEum.getIntegerEum().ticket--)+"张票");
                 }
-            }
-            System.out.println(Thread.currentThread().getName()+" "+j++);
+          //  }
         }
     }
 
@@ -27,12 +27,10 @@ public class TicketThread extends  Thread{
         TicketThread t3=new TicketThread();
         TicketThread t4=new TicketThread();
         t1.start();
-        t1.join();
         t2.start();
-        t2.join();
         t3.start();
-        t3.join();
         t4.start();
-        t4.join();
+        Thread.sleep(5000);
+        System.out.println(IntegerEum.getIntegerEum().ticket);
     }
 }

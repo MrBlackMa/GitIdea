@@ -8,7 +8,8 @@ import java.util.concurrent.atomic.AtomicLong;
  * 当加入join方法的时候,线程合并成了一个单线线程，当前线程执行完 才执行下一个线程
  * 而当不加join  三个线程同时执行,拿到数字会产生并发数据不对问题
  * 所以 同时执行需要加上锁数据 那么数据一定就对了
- *
+ * CPU执行没有synchronized的数据的时候,  并行拿到数据 产生脏数据
+ * CPU执行有synchronized的数据 就是线程全部准备就绪,等待数据的释放,然后争抢锁资源拿到进行执行逻辑
  */
 public class T03_Sleep_Yield_Join {
     //private  volatile
@@ -17,12 +18,12 @@ public class T03_Sleep_Yield_Join {
 
     Object ob = new Object();
 
-    //synchronized
+    synchronized
     void m() {
         //synchronized (ob){
         for (long i = 0; i < 100000; i++)
-      //        count++;
-            atomicLong.getAndIncrement();
+            System.out.println(Thread.currentThread().getName()+"执行++"+count++);
+              //atomicLong.getAndIncrement();
         // }
     }
 
@@ -60,7 +61,7 @@ public class T03_Sleep_Yield_Join {
         //t2.join();
         t3.start();
         //t3.join();
-        Thread.sleep(5000);
+        Thread.sleep(1500);
         System.out.println(t03_sleep_yield_join.count);
         System.out.println(t03_sleep_yield_join.atomicLong);
 
