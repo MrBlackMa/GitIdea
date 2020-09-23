@@ -7,25 +7,25 @@ import java.util.List;
 /**
  * 自己的想法 使用join
  */
-public class Mianshi3 {
+public class MianShi3 {
   volatile   List list=new LinkedList<>();
 
-    public void  add(Object object){
+    public synchronized void  add(Object object){
         list.add(object);
     }
 
 
-
-    public int size(){
+    public synchronized int size(){
         return list.size();
     }
 
     public static void main(String[] args) {
-        Mianshi3 m3=new Mianshi3();
+        MianShi3 m3=new MianShi3();
         Thread t2=new Thread(()->{
             System.out.println("t2启动");
             try {
-                Thread.sleep(1000);
+                // 10毫秒够我计算到数值五了
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
