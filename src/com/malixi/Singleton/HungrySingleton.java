@@ -6,7 +6,7 @@ package com.malixi.Singleton;
 public class HungrySingleton {
     private static final HungrySingleton hungrySingleton=new HungrySingleton();
 
-    public HungrySingleton() {
+    private HungrySingleton() {
     }
 
     public static HungrySingleton getHungrySingleton() {

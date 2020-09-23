@@ -3,7 +3,7 @@ package com.malixi.Singleton;
 public class LazySington {
     private static LazySington lazySington;
 
-    public LazySington(){
+    private LazySington(){
 
     }
 
