@@ -27,14 +27,14 @@ public class MianShi2 {
             System.out.println("t2启动");
             synchronized (m2){
                 try {
-                    //t2监听着
+                    //t2暂停 释放锁 t2监听着-->第一步
                   m2.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println("list的size:"+m2.size());
                 System.out.println("t2结束");
-                //没有这句话 t1则不继续执行 通知t1继续执行
+                //没有这句话 t1则不继续执行 通知t1继续执行 --第四步
                   m2.notify();
             }
 
@@ -49,9 +49,10 @@ public class MianShi2 {
                     m2.add(new Object());
                     System.out.println(i);
                    if(m2.size()==5){
-                       // 通知t2 继续进行
+                       // 通知t2 继续进行 -->第二步
                        m2.notify();
                        try {
+                           // t1暂停 并且释放锁 -->第三步
                            m2.wait();
                            System.out.println("t1还没结束");
                        } catch (InterruptedException e) {
@@ -60,6 +61,7 @@ public class MianShi2 {
                    }
                 }
             }
+            //-->第五步
             System.out.println("t1结束");
 
         },"t1");

@@ -18,8 +18,7 @@ public class T03_Sleep_Yield_Join {
 
     Object ob = new Object();
 
-    synchronized
-    void m() {
+    synchronized void m() {
         //synchronized (ob){
         for (long i = 0; i < 100000; i++)
             System.out.println(Thread.currentThread().getName()+"执行++"+count++);
@@ -30,12 +29,16 @@ public class T03_Sleep_Yield_Join {
     public static void main(String[] args) throws InterruptedException {
         T03_Sleep_Yield_Join t03_sleep_yield_join = new T03_Sleep_Yield_Join();
         //t03_sleep_yield_join.testJoin();
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
+//        Thread t1 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println(Thread.currentThread().getName());
+//                t03_sleep_yield_join.m();
+//            }
+//        });
+        Thread t1=new Thread(()-> {
                 System.out.println(Thread.currentThread().getName());
                 t03_sleep_yield_join.m();
-            }
         });
 
         Thread t2 = new Thread(new Runnable() {

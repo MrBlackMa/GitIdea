@@ -3,6 +3,7 @@ package com.malixi.reentrantlock;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * 门闩
  * 记录线程结束
  */
 public class T06_TestCountDownLatch {
