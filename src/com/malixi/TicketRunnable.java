@@ -6,6 +6,10 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 一个对象 多个线程
+ * AtomicInteger 只能保证数据的原子性 不能保证数据的有序性
+ */
 public class TicketRunnable implements Runnable {
     private int ticket = 10;
     volatile AtomicInteger at=new AtomicInteger(99);
