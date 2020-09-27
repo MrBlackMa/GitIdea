@@ -3,6 +3,7 @@ package com.malixi.reentrantlock;
 import java.util.concurrent.locks.LockSupport;
 
 /**
+ * 支持性锁
  * 唤醒，阻塞线程类
  */
 public class LockSupportDemo {
