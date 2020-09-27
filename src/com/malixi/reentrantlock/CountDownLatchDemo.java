@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
  * 门闩
  * 记录线程结束
  */
-public class T06_TestCountDownLatch {
+public class CountDownLatchDemo {
     public static void main(String[] args) {
         usingJoin();
         usingCountDownLatch();
