@@ -5,6 +5,8 @@ package com.malixi.sdthread;
  */
 public class ThreadDemo1 {
 
+
+
     static class  A implements  Runnable{
         @Override
         public void run() {
