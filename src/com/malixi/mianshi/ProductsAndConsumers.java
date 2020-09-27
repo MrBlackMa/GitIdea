@@ -12,7 +12,8 @@ import java.util.LinkedList;
  *  * 有个问题肯定想不通 就是：当生产者执行了生产 list.add 然后  this.notifyAll();// 通知消费者线
  *  * 消费者这个时候会判断里面不是零 为什么不消费呢？
  *  * 解答：因为这个时候 数据还是被锁着在 notify是不能释放锁的  在生产者里面第一行 一直不满足wait条件
- *  * 只有等放满10个 触发wait 才释放锁,然后
+ *  * 只有等放满10个 触发wait 才释放锁,然后等待执行的消费者才执行 发现不等于0 锁起来 开始消费 等消费完毕
+ *  * 然后wait 阻塞住
  *
  */
 public class ProductsAndConsumers<T> {
