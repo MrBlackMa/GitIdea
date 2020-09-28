@@ -1,0 +1,7 @@
+1, collection              map
+
+   list ->CopyOnWriteMap
+   set->
+   queue->ArrayBlockingQueue LinkedBlockingQueue
+   hashmap-> concurrentMap
+          ->  hashtable
